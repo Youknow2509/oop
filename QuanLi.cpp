@@ -136,7 +136,10 @@ int main () {
             case 1: {
                 int idPhong;
                 SinhVien sv;
-                cin >> idPhong >> sv;
+                cout << "Nhap id phong :";
+                cin >> idPhong ;
+                cout << "Nhap thong tin sinh vien: ";
+                cin >> sv;
                 ql.themSV(idPhong, sv);
                 break;
             }
@@ -148,6 +151,7 @@ int main () {
             }
             case 3: {
                 int idPhong;
+                cout << "Nhap id phong: ";
                 cin >> idPhong;
                 ql.giaHanHD(idPhong);
                 break;
@@ -155,30 +159,37 @@ int main () {
             case 4: {
                 int idPhong;
                 SinhVien sv;
-                cin >> idPhong >> sv;
+                cout << "Nhap id phong: ";
+                cin >> idPhong;
+                cout << "Nhap thong tin sinh vien: ";
+                cin >> sv;
                 ql.chuyenPhong(sv, idPhong);
                 break;
             }
             case 5: {
                 int idPhong;
+                cout << "Nhap id phong: ";
                 cin >> idPhong;
                 ql.tinhThuePhong(idPhong);
                 break;
             }
             case 6: {
                 SinhVien sv;
+                cout << "Nhap thong tin sinh vien: ";
                 cin >> sv;
                 ql.tinhTienSV(sv);
                 break;
             }
             case 7: {
                 int idPhong;
+                cout << "Nhap id phong: ";
                 cin >> idPhong;
                 ql.themPhong(idPhong);
                 break;
             }
             case 8: {
                 int idPhong;
+                cout << "Nhap id phong: ";
                 cin >> idPhong;
                 ql.xoaPhong(idPhong);
                 break;
