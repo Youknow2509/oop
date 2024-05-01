@@ -1,166 +1,136 @@
-#ifndef PHONG_H
-#define PHONG_H
+#ifndef Phong_H 
+#define Phong_H
 
-#include <bits/stdc++.h>
-
+#include <iostream>
+#include <list>
+#include "HopDong.h" 
+#include "Person/Nguoi.h"
+#include "Person/BaoVe.h"
 #include "Person/SinhVien.h"
-#include "HopDong.h"
-#include "Phong.h"
-
 
 using namespace std;
 
-class Phong
-{
+class Phong {
 private:
-  int soPhong;
-  int soToa;
-  int loaiPhong;
-  int soDien;
-  int soNuoc;
-  list<SinhVien> dsSV;
-  // HopDong a;
+    int id;
+    int soPhong;
+    int soToa;
+    int loaiPhong;
+    int soDien;
+    int soNuoc;
+    HopDong a;
+    list<SinhVien> dsSV;
 
 public:
-  Phong();
-  Phong(int soPhong, int soToa, int loaiPhong, int soDien, int soNuoc)
-  {
-    this->soPhong = soPhong;
-    this->soToa = soToa;
-    this->loaiPhong = loaiPhong;
-    this->soDien = soDien;
-    //	this->a = a;
-  }
-  int getSoPhong()
-  {
-    return soPhong;
-  }
+    Phong() {}
+    Phong(int id, int soPhong, int soToa, int loaiPhong, int soDien, int soNuoc)
+        : id(id), soPhong(soPhong), soToa(soToa), loaiPhong(loaiPhong), soDien(soDien), soNuoc(soNuoc) {}
 
-  void themSinhVien(SinhVien sinhVien)
-  {
-    if (dsSV.size() < loaiPhong)
-    {
-      dsSV.push_back(sinhVien);
-      cout << "Sinh vien " << sinhVien.getName() << " da duoc them vao phong " << soPhong << "." << endl;
-    }
-    else
-    {
-      cout << "Phong " << soPhong << " da day. Khong them duoc sinh vien." << endl;
-    }
-  }
-
-  void xoaSinhVien(int ID)
-  {
-    for (list<SinhVien>::iterator it = dsSV.begin(); it != dsSV.end(); ++it)
-    {
-      if (it->getID() == ID)
-      {
-        dsSV.erase(it);
-        cout << "Sinh vien ID " << ID << " da duoc xoa khoi phong " << soPhong << "." << endl;
-        return;
-      }
+    int getSoPhong() {
+        return soPhong;
     }
 
-    // If no match is found, inform the user
-    cout << "Khong tim thay sinh vien ID " << ID << " trong phong " << soPhong << "." << endl;
-  }
-
-  void danSachSinhVien()
-  {
-    if (dsSV.empty())
-    {
-      cout << "Phong " << soPhong << " hien dang trong." << endl;
+    void setSoPhong(int soPhong) {
+        this->soPhong = soPhong;
     }
-    else
-    {
-      cout << "Danh sach sinh vien phong " << soPhong << ":" << endl;
-      for (SinhVien sinhVien : dsSV)
-      {
-        cout << "    - " << sinhVien.getID() << " - " << sinhVien.getName() << " (" << sinhVien.getSDT() << ")" << endl;
-      }
-    }
-  }
 
-  int getSoLuongSinhVien() const
-  {
-    return dsSV.size();
-  }
-
-  void hienThiThongTin()
-  {
-    cout << "Thong tin phong " << soPhong << ":" << endl;
-    cout << "  So toa: " << soToa << endl;
-    cout << "  Loai phong: " << loaiPhong << endl;
-    cout << "  So o dien: " << soDien << endl;
-    cout << "  So voi nuoc: " << soNuoc << endl;
-    cout << "  Danh sach sinh vien:" << endl;
-    for (SinhVien sinhVien : dsSV)
-    {
-      cout << "    - " << sinhVien.getID() << " - " << sinhVien.getName() << " (" << sinhVien.getSDT() << ")" << endl;
+    int getSoToa() {
+        return soToa;
     }
-  }
+
+    void setSoToa(int soToa) {
+        this->soToa = soToa;
+    }
+
+    int getLoaiPhong() {
+        return loaiPhong;
+    }
+
+    void setLoaiPhong(int loaiPhong) {
+        this->loaiPhong = loaiPhong;
+    }
+
+    int getSoDien() {
+        return soDien;
+    }
+
+    void setSoDien(int soDien) {
+        this->soDien = soDien;
+    }
+
+    int getSoNuoc() {
+        return soNuoc;
+    }
+
+    void setSoNuoc(int soNuoc) {
+        this->soNuoc = soNuoc;
+    }
+
+    void setID(int id) {
+        this->id = id;
+    }
+
+    int getID() {
+        return id;
+    }
+    void themSV(SinhVien sv) {
+        dsSV.push_back(sv);
+    }
+    void xoaSV(SinhVien sv) {
+        dsSV.remove(sv);
+    }
+    HopDong getHopDong() {
+        return a;
+    }
+
+    void setHopDong(HopDong a) {
+        this->a = a;
+    }
+
+    SinhVien timSV(int id) {
+        for (auto i = dsSV.begin(); i != dsSV.end(); i++) {
+            if (i->getID() == id) {
+                return *i;
+            }
+        }
+        return SinhVien();
+    }
+
+    int soNguoiTrongPhong() {
+        return dsSV.size();
+    }
+
+    // Nhap xuat voi operator
+    friend istream& operator>>(istream& is, Phong& phong) {
+        cout << "Nhap so phong: ";
+        is >> phong.soPhong;
+        cout << "Nhap so toa: ";
+        is >> phong.soToa;
+        cout << "Nhap loai phong: ";
+        is >> phong.loaiPhong;
+        cout << "Nhap so dien: ";
+        is >> phong.soDien;
+        cout << "Nhap so nuoc: ";
+        is >> phong.soNuoc;
+        cout << "Nhap thong tin hop dong:\n";
+        is >> phong.a; 
+        return is;
+    }
+
+    friend ostream& operator<<(ostream& os, const Phong& phong) {
+        os << "So phong: " << phong.soPhong << endl;
+        os << "So toa: " << phong.soToa << endl;
+        os << "Loai phong: " << phong.loaiPhong << endl;
+        os << "So dien: " << phong.soDien << endl;
+        os << "So nuoc: " << phong.soNuoc << endl;
+        os << "Thong tin hop dong:\n" << phong.a; 
+        return os;
+    }
+    // Tinh tien phong
+    int tinhTienPhong() {
+        return a.getTienPhong();
+    }
 };
 
-class ToaNha
-{
-private:
-  int soTang;
-  list<Phong> dsPhong;
-  string tenToa;
+#endif 
 
-public:
-  ToaNha(int soTang, string tenToa)
-  {
-    this->soTang = soTang;
-    this->tenToa = tenToa;
-  }
-
-  void themPhong(Phong phong)
-  {
-    dsPhong.push_back(phong);
-    cout << "Phong " << phong.getSoPhong() << " da duoc them vao toa nha " << tenToa << "." << endl;
-  }
-
-  void xoaPhong(int soPhong)
-  {
-    for (list<Phong>::iterator it = dsPhong.begin(); it != dsPhong.end(); ++it)
-    {
-      if (it->getSoPhong() == soPhong)
-      {
-        dsPhong.erase(it);
-        cout << "Phong " << soPhong << " da duoc xoa khoi toa nha " << tenToa << "." << endl;
-        return;
-      }
-    }
-    cout << "Khong tim thay phong " << soPhong << " trong toa nha " << tenToa << "." << endl;
-  }
-
-  void danSachPhong()
-  {
-    if (dsPhong.empty())
-    {
-      cout << "Toa nha " << tenToa << " hien dang trong." << endl;
-    }
-    else
-    {
-      cout << "Danh sach phong toa nha " << tenToa << ":" << endl;
-      for (Phong phong : dsPhong)
-      {
-        cout << "  - Phong " << phong.getSoPhong() << ":" << endl;
-        phong.hienThiThongTin(); // Hien thi thong tin chi tiet cua phong
-      }
-    }
-  }
-
-  int getSoLuongPhong() const
-  {
-    return dsPhong.size();
-  }
-
-  string getTenToa() const
-  {
-    return tenToa;
-  }
-};
-
-#endif
