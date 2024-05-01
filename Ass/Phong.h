@@ -77,7 +77,12 @@ public:
         dsSV.push_back(sv);
     }
     void xoaSV(SinhVien sv) {
-        dsSV.remove(sv);
+        for (auto i = dsSV.begin(); i != dsSV.end(); i++) {
+            if (i->getID() == sv.getID()) {
+                dsSV.erase(i);
+                break;
+            }
+        }
     }
     HopDong getHopDong() {
         return a;
