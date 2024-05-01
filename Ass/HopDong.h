@@ -63,7 +63,9 @@ public:
         cout << "Nhap tien phong: ";
         cin >> tienphong;
         cout << "Nhap dich vu: ";
+
         cin.ignore();
+        
         cout << "Nhap dich vu: ";
 		cin >> dv;
         cout << "Nhap ngay bat dau (dd/mm/yyyy): ";
@@ -98,6 +100,7 @@ public:
 	    is >> hd.id;
 	    cout << "Nhap tien phong: ";
 	    is >> hd.tienphong;
+        is.ignore();
 	    cout << "Nhap ngay bat dau (dd/mm/yyyy): ";
 	    is >> hd.ngayBatDau;
 	    cout << "Nhap ngay ket thuc (dd/mm/yyyy): ";

@@ -76,9 +76,9 @@ public:
         is.ignore();
         getline(is, ng.name);
         cout << "Nhap SDT: ";
-        is >> ng.sdt;
+        getline(is, ng.sdt);
         cout << "Nhap Email: ";
-        is >> ng.email;
+        getline(is, ng.email);
         return is;
     }
     // output

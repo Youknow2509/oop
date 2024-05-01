@@ -117,6 +117,9 @@ public:
         is >> phong.soDien;
         cout << "Nhap so nuoc: ";
         is >> phong.soNuoc;
+
+        is.ignore();
+
         cout << "Nhap thong tin hop dong:\n";
         is >> phong.a; 
         return is;

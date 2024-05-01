@@ -53,14 +53,13 @@ public:
 	friend istream &operator>>(istream &is, BaoVe &bv)
 	{
 		is >> static_cast<Nguoi &>(bv); // Input Nguoi part
-		is.ignore();
 		cout << "Nhap chuc vu: ";
 		getline(is, bv.chucvu);
 		cout << "Nhap ID toa nha: ";
 		is >> bv.id_toanha;
 		cout << "Nhap tang: ";
 		is >> bv.tang;
-
+		is.ignore();
 		return is;
 	}
 	// output

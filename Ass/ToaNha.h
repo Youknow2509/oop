@@ -51,7 +51,6 @@ public:
         getline(is, toaNha.tenToa);
         cout << "Nhap so tang: ";
         is >> toaNha.soTang;
-        is.ignore();
         cout << "Nhap so luong phong: ";
         is >> toaNha.soluongphong;
         is.ignore(); 

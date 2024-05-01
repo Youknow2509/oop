@@ -120,6 +120,7 @@ public:
 	    is >> dv.nonglanhhong;
 	    cout << "Nhap so luong dieu hoa hong: ";
 	    is >> dv.dieuhoahong;
+        is.ignore();
 	    return is;
 	}
 
