@@ -30,8 +30,21 @@ class QuanLi {
     void tinhTienSV(SinhVien sv);
     void xoaPhong(int idPhong);
     void themPhong(int idPhong);
+    //
+    void indssinhvienphong(Phong p);
+    void indsphongtrong(ToaNha tn);
+    void indssinhviendanoptien(ToaNha tn);
+    void indssinhvienchuanoptien(ToaNha tn);
+    //
+    bool checksinhvientontai(int idsinhvien);
+    bool checksinhviendanoptien(int idsinhvien);
+    bool checkphongdanoptien(int idsinhvien);
+    bool checkphongchuanoptien(int idsinhvien);
+    bool checkphongtrong(int idphong);
+    
     // Help funtion
     Phong timPhong(int id);
+    int soluongtrongphong(int idphong);
 };
 
 QuanLi::QuanLi() {
@@ -114,22 +127,50 @@ Phong QuanLi::timPhong(int id) {
     return Phong();
 }
 
+void QuanLi :: indssinhvienphong(Phong p){
+	cout << "\nDanh sach sinh vien trong phong";
+	SinhVien sv;
+	
+} 
+
+void QuanLi :: indsphongtrong(ToaNha tn){
+	
+} 
+
+void QuanLi :: indssinhviendanoptien(ToaNha tn){
+	
+}
+
+void QuanLi :: indssinhvienchuanoptien(ToaNha tn){
+	
+}
+
 int main () {
 
     bool loop = true;
 
     QuanLi ql;
+    
+    
+	 
 
     while (loop) {
-        cout << "1. Them sinh vien" << endl;
-        cout << "2. Xoa sinh vien" << endl;
-        cout << "3. Gia han hop dong" << endl;
-        cout << "4. Chuyen phong" << endl;
-        cout << "5. Tinh tien phong" << endl;
-        cout << "6. Tinh tien sinh vien" << endl;
-        cout << "7. Them phong" << endl;
-        cout << "8. Xoa phong" << endl;
-        cout << "9. Thoat" << endl;
+    	 cout << "                                -------------------------------------" << endl;
+	    cout << "                                |";
+	    cout << setw(26) << "Quan li Ki tuc xa";
+	    cout << "         |" << endl;
+	    cout << "                                -------------------------------------" << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "| 1. Them sinh vien                  |" << endl;
+        cout << "| 2. Xoa sinh vien                   |" << endl;
+        cout << "| 3. Gia han hop dong                |" << endl;
+        cout << "| 4. Chuyen phong                    |" << endl;
+        cout << "| 5. Tinh tien phong                 |" << endl;
+        cout << "| 6. Tinh tien sinh vien             |" << endl;
+        cout << "| 7. Them phong                      |" << endl;
+        cout << "| 8. Xoa phong                       |" << endl;
+        cout << "| 9. Thoat                           |" << endl;
+        cout << "--------------------------------------" << endl;
         int choice;
         cin >> choice;
         switch (choice) {

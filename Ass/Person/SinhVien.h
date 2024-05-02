@@ -10,6 +10,7 @@ class SinhVien : public Nguoi
 {
 private:
 	int sophong;
+	bool ttdongtien; 
 
 public:
 	// constructor
@@ -28,6 +29,14 @@ public:
 	void setSoPhong(int so)
 	{
 		this->sophong = so;
+	}
+	
+	bool isTtDongTien(){
+		return this -> ttdongtien;
+	}
+	
+	void setTtDongTien(bool tt){
+		this -> ttdongtien = tt;
 	}
 
 	// bool kiem tra tien nop

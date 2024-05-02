@@ -11,6 +11,8 @@ class HopDong {
 private:
     int id;
     double tienphong;
+    double tiennuoc = 20.0;
+	double tiendien = 3.5;
     DichVu dv;
     string ngayBatDau;
     string ngayKetThuc;
@@ -56,6 +58,19 @@ public:
     string getNgayKetThuc() {
         return ngayKetThuc;
     }
+    
+    void setTienNuoc(double tn){
+    	this->tiennuoc = tn;
+	}
+	double getTienNuoc(){
+		return this->tiennuoc;
+	}
+	void setTienDien(double td){
+    	this->tiendien = td;
+	}
+	double getTienDien(){
+		return this->tiendien;
+	}
 	//nhap xuat
     void nhapThongTin() {
         cout << "Nhap ID: ";
@@ -116,6 +131,8 @@ public:
 	ostream& operator<<(ostream& os, const HopDong& hd) {
 	    os << "ID: " << hd.id << endl;
 	    os << "Tien phong: " << hd.tienphong << endl;
+	    os << "Tien dien: " << hd.tiendien << endl;
+	    os << "Tien nuoc: " << hd.tiennuoc << endl;
 	    os << "Ngay bat dau: " << hd.ngayBatDau << endl;
 	    os << "Ngay ket thuc: " << hd.ngayKetThuc << endl;
 	    os << "Dich vu: " << hd.dv << endl;

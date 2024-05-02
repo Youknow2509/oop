@@ -1,8 +1,7 @@
 #ifndef Phong_H 
 #define Phong_H
 
-#include <iostream>
-#include <list>
+
 #include "HopDong.h" 
 #include "Person/Nguoi.h"
 #include "Person/BaoVe.h"
@@ -18,13 +17,14 @@ private:
     int loaiPhong;
     int soDien;
     int soNuoc;
+    int soNguoiToiDa; 
     HopDong a;
     list<SinhVien> dsSV;
 
 public:
     Phong() {}
-    Phong(int id, int soPhong, int soToa, int loaiPhong, int soDien, int soNuoc)
-        : id(id), soPhong(soPhong), soToa(soToa), loaiPhong(loaiPhong), soDien(soDien), soNuoc(soNuoc) {}
+    Phong(int id, int soPhong, int soToa, int loaiPhong, int soDien, int soNuoc, int songuoitoida)
+        : id(id), soPhong(soPhong), soToa(soToa), loaiPhong(loaiPhong), soDien(soDien), soNuoc(soNuoc), soNguoiToiDa(soNguoiToiDa) {}
 
     int getSoPhong() {
         return soPhong;
@@ -73,6 +73,14 @@ public:
     int getID() {
         return id;
     }
+    
+    void setsoNguoiToiDa(int n){
+    	this->soNguoiToiDa= n;
+	}
+	int  getsoNguoiToiDa(){
+    	return this->soNguoiToiDa;
+	}
+    
     void themSV(SinhVien sv) {
         dsSV.push_back(sv);
     }
@@ -113,6 +121,8 @@ public:
         is >> phong.soToa;
         cout << "Nhap loai phong: ";
         is >> phong.loaiPhong;
+        cout << "Nhap so nguoi toi da: ";
+        is >> phong.soNguoiToiDa;
         cout << "Nhap so dien: ";
         is >> phong.soDien;
         cout << "Nhap so nuoc: ";
@@ -129,6 +139,7 @@ public:
         os << "So phong: " << phong.soPhong << endl;
         os << "So toa: " << phong.soToa << endl;
         os << "Loai phong: " << phong.loaiPhong << endl;
+        os << "So nguoi toi da: " << phong.soNguoiToiDa << endl;
         os << "So dien: " << phong.soDien << endl;
         os << "So nuoc: " << phong.soNuoc << endl;
         os << "Thong tin hop dong:\n" << phong.a; 
@@ -136,7 +147,7 @@ public:
     }
     // Tinh tien phong
     int tinhTienPhong() {
-        return a.getTienPhong();
+        return a.getTienDien()*this->soDien + a.getTienNuoc()*this->soNuoc;
     }
 };
 
