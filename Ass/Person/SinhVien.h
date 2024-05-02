@@ -48,9 +48,6 @@ public:
 	friend istream &operator>>(istream &is, SinhVien &sv)
 	{
 		is >> static_cast<Nguoi &>(sv); // Input Nguoi part
-		cout << "Nhap so phong: ";
-		is >> sv.sophong;
-		is.ignore();
 		return is;
 	}
 	// output

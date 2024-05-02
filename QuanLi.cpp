@@ -13,7 +13,6 @@
 using namespace std;
 
 class QuanLi {
-    private:
         vector<SinhVien> lSinhVien;
         vector<Phong> lPhong;
         vector<ToaNha> lToaNha;
@@ -41,14 +40,39 @@ class QuanLi {
     bool checkphongdanoptien(int idsinhvien);
     bool checkphongchuanoptien(int idsinhvien);
     bool checkphongtrong(int idphong);
-    
+
+    // Getter - Setter
+    vector<SinhVien>& getlSinhVien() {
+        return lSinhVien;
+    }
+    void setlSinhVien(vector<SinhVien> lSinhVien) {
+        this->lSinhVien = lSinhVien;
+    }
+    vector<Phong>& getlPhong() {
+        return lPhong;
+    }
+    void setlPhong(vector<Phong> lPhong) {
+        this->lPhong = lPhong;
+    }
+    vector<ToaNha>& getlToaNha() {
+        return lToaNha;
+    }
+    void setlToaNha(vector<ToaNha> lToaNha) {
+        this->lToaNha = lToaNha;
+    }
+
     // Help funtion
     Phong timPhong(int id);
     int soluongtrongphong(int idphong);
+    void HienThiDSPhongTrong();
+
 };
 
 QuanLi::QuanLi() {
-
+    this->lBaoVe = vector<BaoVe>();
+    this->lPhong = vector<Phong>();
+    this->lSinhVien = vector<SinhVien>();
+    this->lToaNha = vector<ToaNha>();
 }
 
 QuanLi::QuanLi(vector<SinhVien> lSinhVien, vector<Phong> lPhong, vector<ToaNha> lToaNha, vector<BaoVe> lBaoVe) {
@@ -116,6 +140,15 @@ void QuanLi::tinhTienSV(SinhVien sv) {
     cout << "Tien phong: " << ph.tinhTienPhong()/ph.soNguoiTrongPhong() << endl;
 }
 
+void QuanLi::HienThiDSPhongTrong() {
+    for (int i = 0; i <= this->lPhong.size(); i++) {
+        Phong ph = lPhong[i];
+        if (ph.getSoNguoiTrongPhong() < ph.getSoNguoiToiDa()) {
+            cout << ph.getID() << endl;
+        }
+    }
+}
+
 
 // Help funtion
 Phong QuanLi::timPhong(int id) {
@@ -145,14 +178,32 @@ void QuanLi :: indssinhvienchuanoptien(ToaNha tn){
 	
 }
 
-int main () {
 
+
+// // 1. Them sinh vien   
+// void Handle1(SinhVien& sv) {
+//     cout << sv;
+//     cout << "Danh sach phong co the vao:";
+//     ql.HienThiDSPhongTrong();
+//     cout << "Nhap ID phong muon vao: ";
+//     int idPh; 
+//     cin >> idPh;
+//     cin.ignore();
+//     sv.setSoPhong(idPh);
+//     ql.themSV(idPh, sv);
+
+//     return;
+// }
+
+void Application() {
     bool loop = true;
-
     QuanLi ql;
+    Phong phong1(1, 1, 1, 4, 12, 20, 4);
+    HopDong contract1(1, 500.0, "01/01/2024", "31/12/2024");
+    phong1.setHopDong(contract1);
     
-    
-	 
+    ql.getlPhong().push_back(phong1);
+    ql.getlPhong().push_back(Phong(2, 1, 1, 4, 12, 20, 4));
 
     while (loop) {
     	 cout << "                                -------------------------------------" << endl;
@@ -161,7 +212,7 @@ int main () {
 	    cout << "         |" << endl;
 	    cout << "                                -------------------------------------" << endl;
         cout << "--------------------------------------" << endl;
-        cout << "| 1. Them sinh vien                  |" << endl;
+        cout << "| 1. Them sinh vien                  |" << endl; // Nhap thong tin va chon chuc nang
         cout << "| 2. Xoa sinh vien                   |" << endl;
         cout << "| 3. Gia han hop dong                |" << endl;
         cout << "| 4. Chuyen phong                    |" << endl;
@@ -169,7 +220,11 @@ int main () {
         cout << "| 6. Tinh tien sinh vien             |" << endl;
         cout << "| 7. Them phong                      |" << endl;
         cout << "| 8. Xoa phong                       |" << endl;
-        cout << "| 9. Thoat                           |" << endl;
+        cout << "| 9. Xem danh sach sinh vien                           |" << endl;
+        cout << "| 10. Xem danh sach phong              |" << endl;
+        cout << "| 11. Xem danh sach phong trong        |" << endl;
+        cout << "| 12. Xem danh sach toa nha               |" << endl;
+        cout << "| 13. Thoat                           |" << endl;
         cout << "--------------------------------------" << endl;
         int choice;
         cin >> choice;
@@ -236,12 +291,39 @@ int main () {
                 break;
             }
             case 9: {
+                for (int i = 0; i < ql.getlSinhVien().size(); i++) {
+                    cout << ql.getlSinhVien()[i];
+                }
+                break;
+            }
+            case 10: {
+                cout << ql.getlPhong().size() << endl;
+                for (int i = 0; i < ql.getlPhong().size(); i++) {
+                    cout << ql.getlPhong()[i];
+                }
+                break;
+            }
+            case 11: {
+                ql.HienThiDSPhongTrong();
+                break;
+            }
+            case 12: {
+                for (int i = 0; i < ql.getlToaNha().size(); i++) {
+                    cout << ql.getlToaNha()[i];
+                }
+                break;
+            }
+            case 13: {
                 loop = false;
                 break;
             }
         }
     }
-    
+}
+
+int main () {
+
+    Application();
 
     return 0;
 }

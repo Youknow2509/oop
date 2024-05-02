@@ -11,8 +11,8 @@ class HopDong {
 private:
     int id;
     double tienphong;
-    double tiennuoc = 20.0;
-	double tiendien = 3.5;
+    double tiennuoc;
+	double tiendien;
     DichVu dv;
     string ngayBatDau;
     string ngayKetThuc;
@@ -21,7 +21,7 @@ public:
     HopDong() : id(0), tienphong(0.0), ngayBatDau(""), ngayKetThuc("") {}
     
     HopDong(int id, double tienphong, string ngayBatDau, string ngayKetThuc)
-        : id(id), tienphong(tienphong), dv(), ngayBatDau(ngayBatDau), ngayKetThuc(ngayKetThuc) {}
+        : id(id), tienphong(tienphong), dv(), ngayBatDau(ngayBatDau), ngayKetThuc(ngayKetThuc), tiennuoc(20), tiendien(3.5) {}
 
     //getter and setter
 	

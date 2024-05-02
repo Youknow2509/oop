@@ -24,7 +24,7 @@ private:
 public:
     Phong() {}
     Phong(int id, int soPhong, int soToa, int loaiPhong, int soDien, int soNuoc, int songuoitoida)
-        : id(id), soPhong(soPhong), soToa(soToa), loaiPhong(loaiPhong), soDien(soDien), soNuoc(soNuoc), soNguoiToiDa(soNguoiToiDa) {}
+        : id(id), soPhong(soPhong), soToa(soToa), loaiPhong(loaiPhong), soDien(soDien), soNuoc(soNuoc), soNguoiToiDa(songuoitoida) {}
 
     int getSoPhong() {
         return soPhong;
@@ -77,7 +77,7 @@ public:
     void setsoNguoiToiDa(int n){
     	this->soNguoiToiDa= n;
 	}
-	int  getsoNguoiToiDa(){
+	int  getSoNguoiToiDa(){
     	return this->soNguoiToiDa;
 	}
     
@@ -115,6 +115,8 @@ public:
 
     // Nhap xuat voi operator
     friend istream& operator>>(istream& is, Phong& phong) {
+        cout << "Nhap id: ";
+        is >> phong.id;
         cout << "Nhap so phong: ";
         is >> phong.soPhong;
         cout << "Nhap so toa: ";
@@ -148,6 +150,11 @@ public:
     // Tinh tien phong
     int tinhTienPhong() {
         return a.getTienDien()*this->soDien + a.getTienNuoc()*this->soNuoc;
+    }
+
+    // Lay so nguoi trong phong hien tai
+    int getSoNguoiTrongPhong() {
+        return this->dsSV.size();
     }
 };
 
